@@ -16,10 +16,10 @@ class grammar():
     def spell_check(self, str_before):
         self.driver.find_element(By.ID, 'text1').send_keys(str_before)
         self.driver.find_element(By.ID, 'btnCheck').click()
-        test = self.driver.find_element(By.XPATH, 
+        text_body = self.driver.find_element(By.XPATH, 
         '/html/body/table/tbody/tr[2]/td').text
 
-        if test[0:3] == '맞춤법':
+        if text_body[0:3] == '맞춤법':
             self.driver.find_element(By.ID, 'btnRenew2').click()
             return str_before
 
