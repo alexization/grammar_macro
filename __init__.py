@@ -11,10 +11,18 @@ if __name__ == '__main__':
 
     for i in range(2, 20):
         str_before = ws.cell(row=i, column=5).value
+
         if str_before == 'NULL':
             continue
         else:
             ws.cell(row=i, column=8).value = spell.spell_check(str_before)
+            
+            while True:
+                if ws.cell(row=i, column=8).value == str_before:
+                    break
+                else:
+                    str_before = ws.cell(row=i, column=8).value
+                    ws.cell(row=i, column=8).value = spell.spell_check(str_before)
 
     wb.save(
         '/Users/hyoseok/Desktop/WeeklySurvey_NeedCleaningUntil2022July31.xlsx')
